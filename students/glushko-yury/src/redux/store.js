@@ -23,12 +23,11 @@ const reducers = combineReducers({
   profile: profileReducer,
 });
 
+const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
+
 const store = createStore(
   persistReducer(persistConfig, reducers),
-  compose(
-    applyMiddleware(routerMiddleware(history), thunk),
-    window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
-  )
+  composeEnhancers(applyMiddleware(routerMiddleware(history), thunk))
 );
 export const persistor = persistStore(store);
 

@@ -48,7 +48,7 @@ module.exports = app => {
     if (chats[chatIdx].messages.some(({ id }) => id === newMsg.id)) {
       res
         .status(400)
-        .send(`Сообщение с идентификатором ${newChat.chatId} уже существует`);
+        .send(`Сообщение с идентификатором ${newMsg.id} уже существует`);
     }
 
     chats[chatIdx].messages.push(newMsg);
